@@ -33,6 +33,11 @@ public class LogicScript : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void levelTwo()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void quitGame()
     {
         Application.Quit();
