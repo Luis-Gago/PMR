@@ -27,6 +27,10 @@ public class PipeMiddleScript : MonoBehaviour
         {
             logic.levelTwo();
         }
+        else if (logic.playerScore == 2 && currentScene.name == "Level2")
+        {
+            logic.levelThree();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
