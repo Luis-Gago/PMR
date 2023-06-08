@@ -7,4 +7,5 @@ Features to add:
 3. Link to EMG sensors for gameplay. (Meeting with Kunal 6/8 to link game to EMG sensors.)
 
 **Future features:**
+
 4. Allow multiple hits before death.
