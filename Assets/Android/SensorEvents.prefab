@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,20 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2723144247505590849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e06f89d9a1b54a7d6bfe42a50dbe32da, type: 3}
+  m_Script: {fileID: 11500000, guid: e307ed272192e4fb8a9c34671a4dc8b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnEmgPwrReceived:
+  OnRawEMGPwrReceived:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ReceiveNumber
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnBatteryVoltageReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  SwitchToWaitForUserState:
+    m_PersistentCalls:
+      m_Calls: []
+  sensor: {fileID: 0}
+  bleDeviceMenu: {fileID: 0}
+  dropdown: {fileID: 0}
