@@ -20,19 +20,19 @@ public class AndroidBinding : MonoBehaviour
     public class Event : UnityEvent { };
     public Event SwitchToWaitForUserState;
 
-    // private bool didPlayerCrashThisTrial = false;
+    private bool didPlayerCrashThisTrial = false;
     private int trialNumber;
     private int playerNormalScore;
-    // private int playerBonusScore;
-    // private int playerLife;
-    // private float coinAltitude;
-    // private float spaceshipCommandSignalAtCurvePeakPointCrossing;
-    // private float curveAmplitude;
-    // private float curveWidth;
-    // private float curveSpeed;
-    // private float spaceshipCommandSignalAtCrash;
+    private int playerBonusScore;
+    private int playerLife;
+    private float coinAltitude;
+    private float spaceshipCommandSignalAtCurvePeakPointCrossing;
+    private float curveAmplitude;
+    private float curveWidth;
+    private float curveSpeed;
+    private float spaceshipCommandSignalAtCrash;
     private float emgBoostFactor;
-    // private float coinHeight;
+    private float coinHeight;
     private float emgRaw;
     private float emgFiltered;
     private float emgMaxFiltered;
@@ -309,18 +309,18 @@ public class AndroidBinding : MonoBehaviour
         public Time TrialEndTime;
         public String Timestamp;
         public int trialNumber;
-        // public int playerLife;
+        public int playerLife;
         public int playerNormalScore;
-        // public int playerBonusScore;
-        // public float coinAltitude;
-        // public float coinHeight;
-        // public float curveAmplitude;
-        // public float curveWidth;
-        // public float curveSpeed;
-        // public bool didPlayerCrashThisTrial;
-        // public float spaceshipCommandSignalAtCrash;
-        // public float spaceshipCommandSignalAtCurvePeakPointCrossing;
-        // public float emgBoostFactor;
+        public int playerBonusScore;
+        public float coinAltitude;
+        public float coinHeight;
+        public float curveAmplitude;
+        public float curveWidth;
+        public float curveSpeed;
+        public bool didPlayerCrashThisTrial;
+        public float spaceshipCommandSignalAtCrash;
+        public float spaceshipCommandSignalAtCurvePeakPointCrossing;
+        public float emgBoostFactor;
         public float lpf;
         public float emgRaw;
         public float emgFiltered;
@@ -337,20 +337,20 @@ public class AndroidBinding : MonoBehaviour
     public void OnTrialCompleted() {
         TrialInfo trial = new TrialInfo();
         trial.Timestamp = DateTime.Now.ToString("O");
-        // trial.trialNumber = trialNumber;
-        // trial.playerLife = playerLife;
+        trial.trialNumber = trialNumber;
+        trial.playerLife = playerLife;
         trial.playerNormalScore = playerNormalScore;
-        // trial.playerBonusScore = playerBonusScore;
-        // trial.coinAltitude = coinAltitude;
-        // trial.coinHeight = coinHeight;
-        // trial.curveAmplitude = curveAmplitude;
-        // trial.curveWidth = curveWidth;
-        // trial.curveSpeed = curveSpeed;
-        // trial.didPlayerCrashThisTrial = didPlayerCrashThisTrial;
-        // trial.spaceshipCommandSignalAtCrash = spaceshipCommandSignalAtCrash;
-        // trial.emgBoostFactor = emgBoostFactor;
+        trial.playerBonusScore = playerBonusScore;
+        trial.coinAltitude = coinAltitude;
+        trial.coinHeight = coinHeight;
+        trial.curveAmplitude = curveAmplitude;
+        trial.curveWidth = curveWidth;
+        trial.curveSpeed = curveSpeed;
+        trial.didPlayerCrashThisTrial = didPlayerCrashThisTrial;
+        trial.spaceshipCommandSignalAtCrash = spaceshipCommandSignalAtCrash;
+        trial.emgBoostFactor = emgBoostFactor;
         trial.lpf = lpf;
-        // trial.spaceshipCommandSignalAtCurvePeakPointCrossing = spaceshipCommandSignalAtCurvePeakPointCrossing;
+        trial.spaceshipCommandSignalAtCurvePeakPointCrossing = spaceshipCommandSignalAtCurvePeakPointCrossing;
         trial.emgRaw = emgRaw;
         trial.emgFiltered = emgFiltered;
         trial.emgMaxFiltered = emgMaxFiltered;
@@ -402,55 +402,55 @@ public class AndroidBinding : MonoBehaviour
         playerNormalScore = normalScore;
     }
 
-    // public void SetPlayerBonusScore(int bonusScore)
-    // {
-    //     playerBonusScore = bonusScore;
-    // }
+    public void SetPlayerBonusScore(int bonusScore)
+    {
+        playerBonusScore = bonusScore;
+    }
 
-    // public void SetPlayerLife(int life)
-    // {
-    //     playerLife = life;
-    // }
+    public void SetPlayerLife(int life)
+    {
+        playerLife = life;
+    }
 
-    // public void SetPlayerCrashTrialRecord(bool didCrash)
-    // {
-    //     didPlayerCrashThisTrial = didCrash;
-    // }
+    public void SetPlayerCrashTrialRecord(bool didCrash)
+    {
+        didPlayerCrashThisTrial = didCrash;
+    }
 
-    // public void SetPlayerAltitudeAtCrash(float crashAltitude)
-    // {
-    //     spaceshipCommandSignalAtCrash = crashAltitude;
-    // }
+    public void SetPlayerAltitudeAtCrash(float crashAltitude)
+    {
+        spaceshipCommandSignalAtCrash = crashAltitude;
+    }
 
-    // public void SetCoinAltitude(float altitude)
-    // {
-    //     coinAltitude = altitude;
-    // }
+    public void SetCoinAltitude(float altitude)
+    {
+        coinAltitude = altitude;
+    }
 
-    // public void SetCoinPaddedHeight(float height)
-    // {
-    //     coinHeight = height;
-    // }
+    public void SetCoinPaddedHeight(float height)
+    {
+        coinHeight = height;
+    }
 
-    // public void SetSpaceshipCommandSignalAtCurvePeakPointCrossing(float verticalCommand)
-    // {
-    //     spaceshipCommandSignalAtCurvePeakPointCrossing = verticalCommand;
-    // }
+    public void SetSpaceshipCommandSignalAtCurvePeakPointCrossing(float verticalCommand)
+    {
+        spaceshipCommandSignalAtCurvePeakPointCrossing = verticalCommand;
+    }
 
-    // public void SetCurveAmplitude(float amplitude)
-    // {
-    //     curveAmplitude = amplitude;
-    // }
+    public void SetCurveAmplitude(float amplitude)
+    {
+        curveAmplitude = amplitude;
+    }
 
-    // public void SetCurveWidth(float width)
-    // {
-    //     curveWidth = width;
-    // }
+    public void SetCurveWidth(float width)
+    {
+        curveWidth = width;
+    }
 
-    // public void SetCurveSpeed(float speed)
-    // {
-    //     curveSpeed = speed;
-    // }
+    public void SetCurveSpeed(float speed)
+    {
+        curveSpeed = speed;
+    }
 
     public void SetEMGBoost(float boost)
     {

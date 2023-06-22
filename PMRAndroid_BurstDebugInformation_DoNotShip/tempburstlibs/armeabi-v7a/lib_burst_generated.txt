@@ -101,6 +101,11 @@ Library: lib_burst_generated
 --compilation-defines=NET_STANDARD_2_1
 --compilation-defines=NETSTANDARD
 --compilation-defines=NETSTANDARD2_1
+--compilation-defines=DEVELOPMENT_BUILD
+--compilation-defines=ENABLE_PROFILER
+--compilation-defines=DEBUG
+--compilation-defines=TRACE
+--compilation-defines=UNITY_ASSERTIONS
 --compilation-defines=UNITY_PRO_LICENSE
 --compilation-defines=ENABLE_CUSTOM_RENDER_TEXTURE
 --compilation-defines=ENABLE_DIRECTOR
@@ -127,6 +132,7 @@ Library: lib_burst_generated
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
 --generate-link-xml=Temp/burst.link.xml
+--debug=Full
 --output=/Users/luisgago/PMR/Temp/StagingArea/tempburstlibs/armeabi-v7a/lib_burst_generated
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.VisualScripting.Flow.dll
@@ -137,11 +143,11 @@ Library: lib_burst_generated
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.2D.Animation.Runtime.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.TextMeshPro.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.Timeline.dll
+--root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.2D.SpriteShape.Runtime.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.2D.PixelPerfect.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.2D.Common.Runtime.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.2D.IK.Runtime.dll
---root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.2D.Tilemap.Extras.dll
 --root-assembly=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/Unity.InternalAPIEngineBridge.001.dll
 --assembly-folder=/Users/luisgago/PMR/Temp/StagingArea/Data/Managed/
