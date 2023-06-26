@@ -155,6 +155,7 @@ public class AndroidBinding : MonoBehaviour
 
     void emgPwrUpdated(int power)
     {
+        Debug.Log("DEBUG LOG: emgPwrUpdated: " + power);
         emgPwr = power;
     }
 
@@ -171,11 +172,17 @@ public class AndroidBinding : MonoBehaviour
     void OnDeviceListReceived(string msg)
     {
         deviceList = CreateBleDeviceList(ParseDeviceListMsgAndClean(msg));
+        Debug.Log("DEBUG LOG: OnDeviceListReceived: " + deviceList);
+
+        // Hack to run (Change this to a list that is populated with the devices found)
+        SendSelectedDeviceToAndroid(deviceList[0]);
+        bleDeviceMenu.SetActive(false);
     }
 
     public void PopulateDropdown()
     {
         SetDropdownList(dropdown, deviceList);
+        Debug.Log("DEBUG LOG: PopulateDropdown" + deviceList);
     }
 
 
@@ -186,6 +193,7 @@ public class AndroidBinding : MonoBehaviour
         if (myDeviceList == null)
         {
             items.Add("No Devices");
+            Debug.Log("DEBUG LOG: No devices found and 'No Devices' text added to list.");
         }
         else
         {
@@ -261,6 +269,7 @@ public class AndroidBinding : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
                 myList.Add(item + " - ch-" + (i + 1));
+                Debug.Log("DEBUG LOG: myList.add");
             }
         }
         return myList;
@@ -300,6 +309,7 @@ public class AndroidBinding : MonoBehaviour
         public void sendDeviceList(string msg)
         {
             _ab.OnDeviceListReceived(msg);
+            Debug.Log("Debug Log: sendDeviceList: " + msg);
         }
     }
 

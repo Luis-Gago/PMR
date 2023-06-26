@@ -711,23 +711,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1222448689438791513, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000015258789
+      value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222448689511551154, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
+      propertyPath: m_VerticalScrollbarVisibility
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1222448689511551155, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -199.99998
+      value: -199.99997
       objectReference: {fileID: 0}
     - target: {fileID: 1222448689683952980, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1222448689683952980, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1222448689683952980, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -72
       objectReference: {fileID: 0}
     - target: {fileID: 1222448689719422314, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
