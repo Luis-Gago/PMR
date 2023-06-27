@@ -174,21 +174,23 @@ public class AndroidBinding : MonoBehaviour
         deviceList = CreateBleDeviceList(ParseDeviceListMsgAndClean(msg));
         Debug.Log("DEBUG LOG: OnDeviceListReceived: " + deviceList);
 
-        // Hack to run (Change this to a list that is populated with the devices found)
-        SendSelectedDeviceToAndroid(deviceList[0]);
-        bleDeviceMenu.SetActive(false);
+        PopulateDropdown();
+        // // Hack to run (Change this to a list that is populated with the devices found)
+        // SendSelectedDeviceToAndroid(deviceList[0]);
+        // bleDeviceMenu.SetActive(false);
     }
 
     public void PopulateDropdown()
     {
+        Debug.Log("DEBUG LOG: PopulateDropdown");
         SetDropdownList(dropdown, deviceList);
-        Debug.Log("DEBUG LOG: PopulateDropdown" + deviceList);
     }
 
 
     public void SetDropdownList(Dropdown dropdown, List<string> myDeviceList)
     {
         print("called SetDropDownList");
+        Debug.Log("DEBUG LOG: SetDropdownList ");
         List<string> items = new List<string>();
         if (myDeviceList == null)
         {
@@ -208,13 +210,14 @@ public class AndroidBinding : MonoBehaviour
         {
             dropdown.options.Add(new Dropdown.OptionData() { text = item });
         }
-        dropdown.Show(); // tells the dropdown to open 
+        // dropdown.Show(); // tells the dropdown to open 
         DropdownItemSelected(dropdown);
         dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropdown); });
     }
 
     void DropdownItemSelected(Dropdown dropdown)
     {
+        Debug.Log("DropdownItemSelected is called");
         int index = dropdown.value;
         if (index != 0)
         {
