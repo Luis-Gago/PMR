@@ -372,6 +372,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &263242174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 263242176}
+  - component: {fileID: 263242175}
+  m_Layer: 0
+  m_Name: EMGDeviceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &263242175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263242174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c09950b6a194a56863246d6d38461c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EMGSignal: 0
+--- !u!4 &263242176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263242174}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479197603
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +855,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &743246311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743246312}
+  m_Layer: 0
+  m_Name: Core
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743246312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743246311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2861568, y: 3.4028044, z: -23.0465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1369343694}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &780806777
 GameObject:
@@ -1544,6 +1621,202 @@ RectTransform:
   m_AnchoredPosition: {x: -271, y: 187}
   m_SizeDelta: {x: 579.9, y: 276.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1369343692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1369343694}
+  - component: {fileID: 1369343693}
+  m_Layer: 0
+  m_Name: SignalProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1369343693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369343692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4ca7140795b462facc5c71792e432e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SendScaledEmgSignal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: EMGDeviceManager, Assembly-CSharp
+        m_MethodName: EMGSignalObserver
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateEmgBoostFactorLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetEMGBoost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateEMGRawLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetRawEMG
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateEMGFilteredLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetFilteredEMG
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateEMGMinFilteredLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetMinFilteredEMG
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateEMGMaxFilteredLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetMaxFilteredEMG
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateEMGScaledLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetScaledEMG
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateLPFLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetLPF
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  UpdateRawEmgUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateFilteredEmgUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateMaxFilteredUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateMinFilteredUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateEmgScaledUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateLpfDisplayUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateBoostTextUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateMaxDecayToDisplayUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateActiveMaxFilteredEmgUI:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateIsActiveMaxTrialBasedUI:
+    m_PersistentCalls:
+      m_Calls: []
+  CalibrationPanel: {fileID: 0}
+  flex: {fileID: 0}
+--- !u!4 &1369343694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369343692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 743246312}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380380832
 GameObject:
   m_ObjectHideFlags: 0

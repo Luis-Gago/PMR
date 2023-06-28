@@ -6,22 +6,27 @@ using UnityEngine.UI;
 public class EMGDeviceManager : MonoBehaviour
 {
     public static EMGDeviceManager instance;
+    private SliderController sliderController;
+    private SignalProcessing signalProcessing;
 
     private string selectedEMGDevice;
     private int selectedEmgDeviceChannel;
-    private SliderController sliderController;
-    private float emgPwr;
+    public float EMGSignal;
 
+    
     private void Start()
     {
-        sliderController = FindObjectOfType<SliderController>();
+       
     }
 
     private void Update()
     {
-        // // Use emgPwr to determine slider value
-        // float sliderValue = emgPwr; // Modify this line based on your desired logic
-        // sliderController.SetValue(sliderValue);
+
+    }
+
+    public void EMGSignalObserver(float scaledEMGSignal) 
+    {
+        EMGSignal = scaledEMGSignal;
     }
 
     public void SetSelectedDevice(string deviceAndChannel)

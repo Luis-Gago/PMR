@@ -372,14 +372,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SendScaledEmgSignal:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2025528764}
+        m_TargetAssemblyTypeName: EMGDeviceManager, Assembly-CSharp
+        m_MethodName: EMGSignalObserver
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   updateEmgBoostFactorLog:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetEMGBoost
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -394,7 +406,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetRawEMG
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -409,7 +421,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetFilteredEMG
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -424,7 +436,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetMinFilteredEMG
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -439,7 +451,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetMaxFilteredEMG
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -454,7 +466,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetScaledEMG
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -469,7 +481,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
         m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
         m_MethodName: SetLPF
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -787,6 +799,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1222448690324535772, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717940701199421750, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e52e5f301bec49049bd4e2c5e5e149b, type: 3}
+    - target: {fileID: 5569490221000456379, guid: 6f40747fa9c2b6b439dfbb5d6b8ed66a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -83,16 +83,20 @@ public class SignalProcessing : MonoBehaviour
                     {
                         counterForInitialization++;
                         last_pwr = 0;
+                        Debug.Log("DEBUG LOG: SignalState.REMOVE_FIRST_SAMPLES" + counterForInitialization);
                     }
                     else
                     {
                         SetSignalStateToStream();
+                        Debug.Log("DEBUG LOG: SetSignalState.STREAM");
                     }
                     break;
 
                 case SignalState.STREAM:
-
+                    Debug.Log("DEBUG LOG: SignalState.STREAM");
                     filtered_power = filtered_power * (1 - lpf) + last_pwr * lpf;
+                    Debug.Log("SignalProcessing.cs filtered_power: " + filtered_power);
+                    Debug.Log("SignalProcessing.cs last_pwr: " + last_pwr);
                     max_filtered = Mathf.Max(max_filtered, filtered_power) * maxDecay;
 
                     maxFilteredList.Add(max_filtered);
@@ -114,6 +118,7 @@ public class SignalProcessing : MonoBehaviour
                     else
                     {
                         emgScaled = Mathf.Clamp(((filtered_power - min_filtered) / (max_filtered - min_filtered)) * boost, 0.0f, 1.0f);
+                        Debug.Log("SignalProcessing.cs emgScaled: " + emgScaled);
                     }
                                   
                     flex.SetActive(hasFlexed);
@@ -128,10 +133,13 @@ public class SignalProcessing : MonoBehaviour
         }
 
         SendEmgSignalToGame(emgScaled);
+        Debug.Log("SignalProcessing.cs emgScaled: " + emgScaled);
         UpdateRawEmgUI.Invoke(last_pwr);
         UpdateFilteredEmgUI.Invoke(filtered_power);
         UpdateMinFilteredUI.Invoke(min_filtered);
+        Debug.Log("SignalProcessing.cs min_filtered: " + min_filtered);
         UpdateMaxFilteredUI.Invoke(max_filtered);
+        Debug.Log("SignalProcessing.cs max_filtered: " + max_filtered);
         UpdateEmgScaledUI.Invoke(emgScaled);
         UpdateActiveMaxFilteredEmgUI.Invoke(active_max_filtered);
     }
@@ -139,6 +147,7 @@ public class SignalProcessing : MonoBehaviour
     public void EmgRawPowerReceived(float pwr)
     {
         last_pwr = pwr;
+        
     }
 
     public float ScaleInput(float x, float x_min, float x_max, float a, float b)
@@ -181,6 +190,7 @@ public class SignalProcessing : MonoBehaviour
     void SendEmgSignalToGame(float emgSignal)
     {
         SendScaledEmgSignal.Invoke(emgSignal);
+        Debug.Log("SignalProcessing.cs emgSignal: " + emgSignal);
     }
 
     public void UpdateMaxFiltered()
@@ -264,6 +274,7 @@ public class SignalProcessing : MonoBehaviour
     public void SetSensorStatusToConnected()
     {
         isSensorConnected = true;
+        Debug.Log("SignalProcessing.cs isSensorConnected: " + isSensorConnected);
     }
 
     private void SetSignalStateToStream()
