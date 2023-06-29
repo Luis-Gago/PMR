@@ -866,7 +866,7 @@ MonoBehaviour:
   SendScaledEmgSignal:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1687966396}
         m_TargetAssemblyTypeName: EMGDeviceManager, Assembly-CSharp
         m_MethodName: EMGSignalObserver
         m_Mode: 0

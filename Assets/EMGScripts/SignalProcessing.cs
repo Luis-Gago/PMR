@@ -64,16 +64,21 @@ public class SignalProcessing : MonoBehaviour
         StartGame();
         SetActiveMaxMode();
         updateEmgBoostFactorLog.Invoke(boost);
+        Debug.Log("SignalProcessing.cs boost: " + boost);
         updateLPFLog.Invoke(lpf);
+        Debug.Log("SignalProcessing.cs lpf: " + lpf);
         UpdateLpfDisplayUI.Invoke(lpf);
         UpdateBoostTextUI.Invoke(boost);
         UpdateMaxDecayToDisplayUI.Invoke(maxDecay);
+        Debug.Log("SignalProcessing.cs maxDecay: " + maxDecay);
         UpdateIsActiveMaxTrialBasedUI.Invoke(isTrialBased);
+        Debug.Log("SignalProcessing.cs isTrialBased: " + isTrialBased);
         flex.SetActive(false);
     }
 
     void FixedUpdate()
     {
+        Debug.Log("SignalProcessing.cs isSensorConnected: " + isSensorConnected);
         if (isSensorConnected)
         {
             switch (signalState)
@@ -109,16 +114,18 @@ public class SignalProcessing : MonoBehaviour
                         if (isTrialBased)
                         {
                             emgScaled = ((filtered_power - min_filtered) / (active_max_filtered - min_filtered)) * boost;
+                            Debug.Log("SignalProcessing.cs emgScaled in the if statement: " + emgScaled);
                         }
                         else
                         {
                             emgScaled = ((filtered_power - min_filtered) / (max_filtered - min_filtered)) * boost;
+                            Debug.Log("SignalProcessing.cs emgScaled in the nested else statement: " + emgScaled);
                         }
                     }
                     else
                     {
                         emgScaled = Mathf.Clamp(((filtered_power - min_filtered) / (max_filtered - min_filtered)) * boost, 0.0f, 1.0f);
-                        Debug.Log("SignalProcessing.cs emgScaled: " + emgScaled);
+                        Debug.Log("SignalProcessing.cs emgScaled in the else statement: " + emgScaled);
                     }
                                   
                     flex.SetActive(hasFlexed);

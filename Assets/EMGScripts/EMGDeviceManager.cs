@@ -27,6 +27,7 @@ public class EMGDeviceManager : MonoBehaviour
     public void EMGSignalObserver(float scaledEMGSignal) 
     {
         EMGSignal = scaledEMGSignal;
+        Debug.Log("EMGSignalObserver " + EMGSignal);
     }
 
     public void SetSelectedDevice(string deviceAndChannel)

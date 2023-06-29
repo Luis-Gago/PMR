@@ -71,6 +71,7 @@ public class AndroidBinding : MonoBehaviour
 
     void Start()
     {    
+        DontDestroyOnLoad(gameObject);
         ConnectService();
         selectedDevice = "No device is selected!";
     }
