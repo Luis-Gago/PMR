@@ -12,16 +12,21 @@ public class EMGDeviceManager : MonoBehaviour
     private string selectedEMGDevice;
     private int selectedEmgDeviceChannel;
     public float EMGSignal;
+    public float max_filtered; // Add the 'max_filtered' variable here
+    public float min_filtered; // Add the 'min_filtered' variable here
 
-    
     private void Start()
     {
-       
+        signalProcessing = FindObjectOfType<SignalProcessing>(); // Find the SignalProcessing script in the scene
+        max_filtered = signalProcessing.max_filtered; // Assign the value of max_filtered from SignalProcessing.cs
+        min_filtered = signalProcessing.min_filtered; // Assign the value of min_filtered from SignalProcessing.cs
     }
 
     private void Update()
     {
-
+        // Use the 'max_filtered' variable as needed
+        Debug.Log("Max Filtered Value: " + max_filtered);
+        Debug.Log("Min Filtered Value: " + min_filtered);
     }
 
     public void EMGSignalObserver(float scaledEMGSignal) 
@@ -60,6 +65,7 @@ public class EMGDeviceManager : MonoBehaviour
         }
     }
 }
+
 
 
 
