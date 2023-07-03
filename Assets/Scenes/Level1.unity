@@ -726,39 +726,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &739035135
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 739035136}
-  m_Layer: 0
-  m_Name: Core
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &739035136
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739035135}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2861568, y: 3.4028044, z: -23.0465}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2129082578}
-  - {fileID: 850812416}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &780806777
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,121 +802,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780806777}
   m_CullTransparentMesh: 1
---- !u!1 &850812414
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 850812416}
-  - component: {fileID: 850812418}
-  m_Layer: 0
-  m_Name: SignalProcessing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &850812416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850812414}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 739035136}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &850812418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 850812414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dd65451b32b451090f1a236c19c366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  min_filtered: 5000
-  max_filtered: 1
-  active_max_filtered: 0
-  SendScaledEmgSignal:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1687966396}
-        m_TargetAssemblyTypeName: EMGDeviceManager, Assembly-CSharp
-        m_MethodName: EMGSignalObserver
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  updateEmgBoostFactorLog:
-    m_PersistentCalls:
-      m_Calls: []
-  updateEMGRawLog:
-    m_PersistentCalls:
-      m_Calls: []
-  updateEMGFilteredLog:
-    m_PersistentCalls:
-      m_Calls: []
-  updateEMGMinFilteredLog:
-    m_PersistentCalls:
-      m_Calls: []
-  updateEMGMaxFilteredLog:
-    m_PersistentCalls:
-      m_Calls: []
-  updateEMGScaledLog:
-    m_PersistentCalls:
-      m_Calls: []
-  updateLPFLog:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateRawEmgUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateFilteredEmgUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateMaxFilteredUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateMinFilteredUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateEmgScaledUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateLpfDisplayUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateBoostTextUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateMaxDecayToDisplayUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateActiveMaxFilteredEmgUI:
-    m_PersistentCalls:
-      m_Calls: []
-  UpdateIsActiveMaxTrialBasedUI:
-    m_PersistentCalls:
-      m_Calls: []
-  CalibrationPanel: {fileID: 0}
-  flex: {fileID: 0}
 --- !u!1 &871656223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85503e2b371424fdb9fa303b16f1c265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  signalProcessingScript: {fileID: 0}
 --- !u!1 &1137941967
 GameObject:
   m_ObjectHideFlags: 0
@@ -6498,6 +6351,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559281296}
   m_CullTransparentMesh: 1
+--- !u!1 &1591058014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591058016}
+  - component: {fileID: 1591058015}
+  m_Layer: 0
+  m_Name: SignalProcessingReference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1591058015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591058014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfe7d17051694d818c4656ecb17d4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1591058016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591058014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2861568, y: 3.4028044, z: -23.0465}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1603562843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6772,53 +6669,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659351420}
   m_CullTransparentMesh: 1
---- !u!1 &1687966395
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1687966397}
-  - component: {fileID: 1687966396}
-  m_Layer: 0
-  m_Name: EMGDeviceManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1687966396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687966395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05c09950b6a194a56863246d6d38461c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EMGSignal: 0
-  max_filtered: 0
-  min_filtered: 0
---- !u!4 &1687966397
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687966395}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745736437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7335,83 +7185,3 @@ CircleCollider2D:
   m_Offset: {x: -0.03, y: -0.45}
   serializedVersion: 2
   m_Radius: 1.37
---- !u!1 &2129082577
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2129082578}
-  - component: {fileID: 2129082579}
-  m_Layer: 0
-  m_Name: SensorEvents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2129082578
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129082577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 739035136}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2129082579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129082577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e307ed272192e4fb8a9c34671a4dc8b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnRawEMGPwrReceived:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 850812418}
-        m_TargetAssemblyTypeName: SceneProcessing, Assembly-CSharp
-        m_MethodName: EmgRawPowerReceived
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 850812418}
-        m_TargetAssemblyTypeName: SceneProcessing, Assembly-CSharp
-        m_MethodName: SetSensorStatusToConnected
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnBatteryVoltageReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  SwitchToWaitForUserState:
-    m_PersistentCalls:
-      m_Calls: []
-  sensor: {fileID: 0}
-  bleDeviceMenu: {fileID: 0}
-  dropdown: {fileID: 0}

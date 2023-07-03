@@ -6,23 +6,31 @@ using UnityEngine.UI;
 public class SliderController : MonoBehaviour
 {
     private Slider slider;
-    
+    public SignalProcessing signalProcessingScript; // Reference to the SignalProcessing script
+
     private void Start()
     {
         slider = GetComponent<Slider>();
+        Debug.Log("SliderController Start");
+
+        // Subscribe to the EmgScaledValueChanged event
+        SignalProcessingReference.signalProcessingScript.EmgScaledValueChanged += UpdateSliderValue;
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        SetValue(EMGDeviceManager.instance.EMGSignal);
-        Debug.Log("EMGDeviceManager.instance.EMGSignal " + EMGDeviceManager.instance.EMGSignal);
-
+        // Unsubscribe from the EmgScaledValueChanged event when the script is destroyed
+        signalProcessingScript.EmgScaledValueChanged -= UpdateSliderValue;
+        Debug.Log("SliderController OnDestroy");
     }
 
-    public void SetValue(float value)
+    private void UpdateSliderValue(float value)
     {
         slider.value = value;
+        Debug.Log("SliderController UpdateSliderValue: " + value);
     }
 }
+
+
 
 

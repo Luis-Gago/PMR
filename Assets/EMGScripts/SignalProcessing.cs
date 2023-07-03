@@ -8,6 +8,7 @@ using System.Linq;
 
 public class SignalProcessing : MonoBehaviour
 {
+    public static SignalProcessing Instance;
     private float filtered_power = 0.0f;
     private float lpf = 0.05f;
     public float min_filtered = 5000.0f;
@@ -16,7 +17,6 @@ public class SignalProcessing : MonoBehaviour
     private float boost = 1.0f;
     public float active_max_filtered;
     private float last_pwr;
-    private float emgScaled;
     private List<float> maxFilteredList = new List<float>();
     private int warmupSamples = 200;
     private int counterForInitialization = 0;
@@ -59,8 +59,17 @@ public class SignalProcessing : MonoBehaviour
     private bool isSetFilteredMinToMax = false;
     public GameObject flex;
 
+    public event Action<float> EmgScaledValueChanged;
+
+    private void Awake()
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
+        SignalProcessingReference.signalProcessingScript = this;
         StartGame();
         SetActiveMaxMode();
         updateEmgBoostFactorLog.Invoke(boost);
@@ -128,7 +137,10 @@ public class SignalProcessing : MonoBehaviour
                         Debug.Log("SignalProcessing.cs emgScaled in the else statement: " + emgScaled);
                     }
                                   
-                    flex.SetActive(hasFlexed);
+                    if (flex != null)
+                    {
+                        flex.SetActive(hasFlexed);
+                    }
                     if ((maxFilteredList.Count > 100) && !isSetFilteredMinToMax)
                     {
                         isSetFilteredMinToMax = true;
@@ -151,6 +163,22 @@ public class SignalProcessing : MonoBehaviour
         UpdateActiveMaxFilteredEmgUI.Invoke(active_max_filtered);
     }
 
+
+    private float _emgScaled;
+    public float emgScaled
+    {
+        get { return _emgScaled; }
+        set
+        {
+            if (_emgScaled != value)
+            {
+                _emgScaled = value;
+                EmgScaledValueChanged?.Invoke(_emgScaled);
+                Debug.Log("SignalProcessing.cs EMGScaledValueChanged: " + _emgScaled);
+            }
+        }
+    }
+    
     public void EmgRawPowerReceived(float pwr)
     {
         last_pwr = pwr;

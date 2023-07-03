@@ -10,7 +10,7 @@ public class UI : MonoBehaviour
     private bool isMaxDecay = false;
     bool isMenu;
     bool pauseFlag;
-    bool isStartGame;
+    // bool isStartGame;
     float time = 0.0f;
     string niceTime;
 
@@ -61,8 +61,8 @@ public class UI : MonoBehaviour
     public class FloatEvent : UnityEvent<float> { };
     public FloatEvent SetMaxDecay;
 
-    private string currentTime;
-    public Text currentTimeToDisplay;
+    // private string currentTime;
+    // public Text currentTimeToDisplay;
     public Text sensorMacAndChannelToDisplay;
 
     void Start()
@@ -71,7 +71,7 @@ public class UI : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;          // Disable screen diming
         pauseFlag = false;
         isMenu = true;
-        isStartGame = false;
+        // isStartGame = false;
         pauseButtonGameObject.SetActive(false);
         startGameObject.SetActive(false);
         ToggleMaxDecay();
@@ -79,12 +79,12 @@ public class UI : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isStartGame)
-        {
-            GameTimer();
-        }
-        currentTime = DateTime.Now.ToString("h:mm tt");
-        currentTimeToDisplay.text = currentTime;
+        // if (isStartGame)
+        // {
+        //     GameTimer();
+        // }
+        // currentTime = DateTime.Now.ToString("h:mm tt");
+        // currentTimeToDisplay.text = currentTime;
     }
 
     public void CallExitButton()
@@ -157,7 +157,7 @@ public class UI : MonoBehaviour
         SetPauseButtonActive();
         //calibrationPanel.SetActive(false);
         StartGameEvent.Invoke();
-        isStartGame = true;
+        // isStartGame = true;
     }
 
 

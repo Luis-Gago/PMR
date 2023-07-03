@@ -391,10 +391,6 @@ public class AndroidBinding : MonoBehaviour
 
     public void SendSelectedDeviceToAndroid(string selectedDeviceAndChannel)
     {
-        //Code to allow emg to persist between scenes.
-        //Access the EMG data with the below function calls:
-        // EMGDeviceManager.instance.GetSelectedDevice() and EMGDeviceManager.instance.GetSelectedDeviceChannel().
-        EMGDeviceManager.instance.SetSelectedDevice(selectedDeviceAndChannel);
 
         object[] parameters = new object[1];
         selectedEMGDevice = selectedDeviceAndChannel.Substring(0, 17);
