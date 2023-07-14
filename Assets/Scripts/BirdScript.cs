@@ -37,8 +37,11 @@ public class BirdScript : MonoBehaviour
     }
 
     private void OnSliderValueChanged(float value)
-    {
-        sliderValue = value; // Update the slider value
+    {   
+        if (value >= .2f)
+        {
+            sliderValue = value; // Update the slider value
+        }
     }
 }
 
