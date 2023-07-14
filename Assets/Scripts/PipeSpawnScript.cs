@@ -9,7 +9,7 @@ public class PipeSpawnScript : MonoBehaviour
     public float initialSpawnRate = 2;
     private float spawnRate = 2;
     private float timer = 0;
-    public float heightOffset = 3;
+    public float heightOffset = 2;
     public float minScale = 1f;
     public float maxScale = 10f;
     public Slider widthSlider; // Reference to the WidthSlider in the Unity UI
