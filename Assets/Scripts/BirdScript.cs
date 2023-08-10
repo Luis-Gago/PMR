@@ -41,7 +41,7 @@ public class BirdScript : MonoBehaviour
         Bird.transform.position = newObjectPosition;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TriggerGameOver()
     {
         logic.gameOver();
         birdIsAlive = false;

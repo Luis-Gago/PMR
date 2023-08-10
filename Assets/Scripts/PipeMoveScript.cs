@@ -6,19 +6,27 @@ public class PipeMoveScript : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float deadZone = -45;
-    // Start is called before the first frame update
+
+    private BirdScript birdScript;
+
     void Start()
     {
-        
+        birdScript = FindObjectOfType<BirdScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = transform.position + (Vector3.left * moveSpeed * Time.deltaTime);
+        Debug.Log("Bird Position " + birdScript.transform.position.x);
+        if (birdScript.birdIsAlive != false && birdScript.transform.position.x <= -10)
+        {
+            birdScript.TriggerGameOver();
+        }
+        
         if (transform.position.x < deadZone)
         {
             Destroy(gameObject);
         }
     }
 }
+

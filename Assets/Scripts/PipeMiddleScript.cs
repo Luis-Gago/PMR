@@ -23,11 +23,11 @@ public class PipeMiddleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (logic.playerScore == 2 && currentScene.name == "Level1")
+        if (logic.playerScore == 10 && currentScene.name == "Level1")
         {
             logic.levelTwo();
         }
-        else if (logic.playerScore == 2 && currentScene.name == "Level2")
+        else if (logic.playerScore == 10 && currentScene.name == "Level2")
         {
             logic.levelThree();
         }
