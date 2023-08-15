@@ -27,7 +27,7 @@ public class PipeMiddleScript : MonoBehaviour
         {
             logic.levelTwo();
         }
-        else if (logic.playerScore == 10 && currentScene.name == "Level2")
+        else if (logic.playerScore == 20 && currentScene.name == "Level2")
         {
             logic.levelThree();
         }
