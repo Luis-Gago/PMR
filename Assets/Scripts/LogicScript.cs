@@ -20,7 +20,24 @@ public class LogicScript : MonoBehaviour
 
     public void restartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        Debug.Log("Current Scene: " + currentScene.name);
+
+        if (currentScene.name == "Level1")
+        {
+            SceneManager.LoadScene(1);
+        }
+        else if (currentScene.name == "Level2")
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (currentScene.name == "Level3")
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void gameOver()

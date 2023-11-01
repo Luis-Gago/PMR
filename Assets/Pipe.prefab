@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
+  resetDuration: 1
 --- !u!212 &3084996003182203225
 SpriteRenderer:
   m_ObjectHideFlags: 0

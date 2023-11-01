@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
+using System.Linq;
 
 public class PipeSpawnScript : MonoBehaviour
 {
@@ -14,10 +17,22 @@ public class PipeSpawnScript : MonoBehaviour
     public float maxScale = 10f;
     public Slider widthSlider; // Reference to the WidthSlider in the Unity UI
 
+// Declare the UpdateAndroidTrialLog event
+    [Serializable]
+    public class Event : UnityEvent { };
+    public Event updateAndroidTrialLog; // Reference to the UpdateAndroidTrialLog event
+
+    [Serializable]
+    public class IntEvent : UnityEvent<int> { };
+    public IntEvent updateTrialInfoWithTrialNumber;
+    private int trialNumber = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
         spawnPipe();
+        // logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
@@ -32,6 +47,12 @@ public class PipeSpawnScript : MonoBehaviour
             spawnPipe();
             timer = 0;
             Debug.Log("Spawn Rate: " + spawnRate); // Print spawnRate to console
+
+            // Invoke the UpdateAndroidTrialLog event
+            updateAndroidTrialLog.Invoke();
+            trialNumber++;
+            updateTrialInfoWithTrialNumber.Invoke(trialNumber);
+
         }
         
         maxScale = widthSlider.value; // Update maxScale based on the WidthSlider value
@@ -41,9 +62,9 @@ public class PipeSpawnScript : MonoBehaviour
     {
         float highestPoint = transform.position.y + heightOffset;
         float lowestPoint = transform.position.y - heightOffset;
-        float randomWidth = Random.Range(minScale, maxScale);
+        float randomWidth = UnityEngine.Random.Range(minScale, maxScale);
 
-        GameObject newPipe = Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+        GameObject newPipe = Instantiate(pipe, new Vector3(transform.position.x, UnityEngine.Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
 
         Vector3 currentScale = newPipe.transform.localScale;
         newPipe.transform.localScale = new Vector3(randomWidth, currentScale.y, currentScale.z);

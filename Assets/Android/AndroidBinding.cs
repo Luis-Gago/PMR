@@ -8,6 +8,27 @@ using System.Linq;
 
 public class AndroidBinding : MonoBehaviour
 {
+    // private static AndroidBinding _instance;
+
+    // public static AndroidBinding Instance
+    // {
+    //     get
+    //     {
+    //         if (_instance == null)
+    //         {
+    //             _instance = FindObjectOfType<AndroidBinding>();
+
+    //             if (_instance == null)
+    //             {
+    //                 GameObject singletonObject = new GameObject();
+    //                 _instance = singletonObject.AddComponent<AndroidBinding>();
+    //                 singletonObject.name = typeof(AndroidBinding).ToString() + " (Singleton)";
+    //             }
+    //         }
+
+    //         return _instance;
+    //     }
+    // }
     AndroidJavaObject unityActivity;
     AndroidJavaObject bridge;
     
@@ -20,7 +41,7 @@ public class AndroidBinding : MonoBehaviour
     public class Event : UnityEvent { };
     public Event SwitchToWaitForUserState;
 
-    private bool didPlayerCrashThisTrial = false;
+    // private bool didPlayerCrashThisTrial = false;
     private int trialNumber;
     private int playerNormalScore;
     private int playerBonusScore;
@@ -101,6 +122,7 @@ public class AndroidBinding : MonoBehaviour
         if (bridge != null)
         {
             bridge.Call("connectService", parameters);
+            Debug.Log("Calling connectService in if statement");
         }
     }
 
@@ -113,7 +135,7 @@ public class AndroidBinding : MonoBehaviour
 
     private void OnApplicationFocus(bool focus)
     {
-        Debug.Log("OnApplicationFocus(), focus = " + focus + "deviceToSave = " + deviceToSave);
+        Debug.Log("OnApplicationFocus(), focus = " + focus + " deviceToSave = " + deviceToSave);
         if (deviceToSave != "None")
         {
             if (focus)
@@ -126,6 +148,7 @@ public class AndroidBinding : MonoBehaviour
             {
                 object[] parameters = new object[1];
                 parameters[0] = unityActivity;
+                Debug.Log("Calls disconnectService in onApplicationFocus.");
                 bridge.Call("disconnectService", parameters);
             }
         }
@@ -140,6 +163,7 @@ public class AndroidBinding : MonoBehaviour
         parameters[0] = unityActivity;
         if (bridge != null)
         {
+            Debug.Log("Calls disconnectService in onApplicationQuit.");
             bridge.Call("disconnectService", parameters);
         }
     }
@@ -320,21 +344,23 @@ public class AndroidBinding : MonoBehaviour
     [Serializable]
     private struct TrialInfo
     {
+        // birdgame specific fields
+        public int playerScore;
         public Time TrialEndTime;
         public String Timestamp;
         public int trialNumber;
-        public int playerLife;
+        // public int playerLife;
         public int playerNormalScore;
-        public int playerBonusScore;
-        public float coinAltitude;
-        public float coinHeight;
-        public float curveAmplitude;
-        public float curveWidth;
-        public float curveSpeed;
-        public bool didPlayerCrashThisTrial;
-        public float spaceshipCommandSignalAtCrash;
-        public float spaceshipCommandSignalAtCurvePeakPointCrossing;
-        public float emgBoostFactor;
+        // public int playerBonusScore;
+        // public float coinAltitude;
+        // public float coinHeight;
+        // public float curveAmplitude;
+        // public float curveWidth;
+        // public float curveSpeed;
+        // public bool didPlayerCrashThisTrial;
+        // public float spaceshipCommandSignalAtCrash;
+        // public float spaceshipCommandSignalAtCurvePeakPointCrossing;
+        // public float emgBoostFactor;
         public float lpf;
         public float emgRaw;
         public float emgFiltered;
@@ -347,24 +373,24 @@ public class AndroidBinding : MonoBehaviour
         public String firmwareVersion;
         public String softwareVersionHash;
     }
-
+//Define trial as the midpoint between two horizontal pipes.
     public void OnTrialCompleted() {
         TrialInfo trial = new TrialInfo();
         trial.Timestamp = DateTime.Now.ToString("O");
         trial.trialNumber = trialNumber;
-        trial.playerLife = playerLife;
+        // trial.playerLife = playerLife;
         trial.playerNormalScore = playerNormalScore;
-        trial.playerBonusScore = playerBonusScore;
-        trial.coinAltitude = coinAltitude;
-        trial.coinHeight = coinHeight;
-        trial.curveAmplitude = curveAmplitude;
-        trial.curveWidth = curveWidth;
-        trial.curveSpeed = curveSpeed;
-        trial.didPlayerCrashThisTrial = didPlayerCrashThisTrial;
-        trial.spaceshipCommandSignalAtCrash = spaceshipCommandSignalAtCrash;
-        trial.emgBoostFactor = emgBoostFactor;
+        // trial.playerBonusScore = playerBonusScore;
+        // trial.coinAltitude = coinAltitude;
+        // trial.coinHeight = coinHeight;
+        // trial.curveAmplitude = curveAmplitude;
+        // trial.curveWidth = curveWidth;
+        // trial.curveSpeed = curveSpeed;
+        // trial.didPlayerCrashThisTrial = didPlayerCrashThisTrial;
+        // trial.spaceshipCommandSignalAtCrash = spaceshipCommandSignalAtCrash;
+        // trial.emgBoostFactor = emgBoostFactor;
+        // trial.spaceshipCommandSignalAtCurvePeakPointCrossing = spaceshipCommandSignalAtCurvePeakPointCrossing;
         trial.lpf = lpf;
-        trial.spaceshipCommandSignalAtCurvePeakPointCrossing = spaceshipCommandSignalAtCurvePeakPointCrossing;
         trial.emgRaw = emgRaw;
         trial.emgFiltered = emgFiltered;
         trial.emgMaxFiltered = emgMaxFiltered;
@@ -380,12 +406,14 @@ public class AndroidBinding : MonoBehaviour
     }
 
     private void LogTrial(string trial) {
-        ///Debug.Log("LogTrial: " + trial);
-
+        // bridge = new AndroidJavaObject("org.sralab.emgimu.unity_bindings.Bridge"); //hardcode
+        Debug.Log("LogTrial: " + trial);
+        Debug.Log("Bridge: " + bridge);
         object[] parameters = { trial };
         if (bridge != null)
         {
             bridge.Call("logTrial", parameters);  // put some code here to fail gracefully
+            Debug.Log("LogTrial in if statement: " + trial);
         }
     }
 
@@ -401,6 +429,8 @@ public class AndroidBinding : MonoBehaviour
         selectedDevice = selectedDeviceAndChannel;
         parameters[0] = selectedDevice;
         deviceToSave = selectedDevice;
+        Debug.Log("SendSelectedDeviceToAndroid Bridge: " + bridge);
+        Debug.Log("SendSelectedDeviceToAndroid selectedDevice: " + selectedEMGDevice);
         if (bridge != null)
         {
             bridge.Call("selectDevice", parameters);
@@ -410,67 +440,68 @@ public class AndroidBinding : MonoBehaviour
     public void SetTrialNumber(int number)
     {
         trialNumber = number;
+        Debug.Log("SetTrialNumber Bridge: " + bridge);
     }
 
-    public void SetPlayerNormalScore(int normalScore)
+    public void SetPlayerNormalScore(int playerScore)
     {
-        playerNormalScore = normalScore;
+        playerNormalScore = playerScore;
     }
 
-    public void SetPlayerBonusScore(int bonusScore)
-    {
-        playerBonusScore = bonusScore;
-    }
+    // public void SetPlayerBonusScore(int bonusScore)
+    // {
+    //     playerBonusScore = bonusScore;
+    // }
 
-    public void SetPlayerLife(int life)
-    {
-        playerLife = life;
-    }
+    // public void SetPlayerLife(int life)
+    // {
+    //     playerLife = life;
+    // }
 
-    public void SetPlayerCrashTrialRecord(bool didCrash)
-    {
-        didPlayerCrashThisTrial = didCrash;
-    }
+    // public void SetPlayerCrashTrialRecord(bool didCrash)
+    // {
+    //     didPlayerCrashThisTrial = didCrash;
+    // }
 
-    public void SetPlayerAltitudeAtCrash(float crashAltitude)
-    {
-        spaceshipCommandSignalAtCrash = crashAltitude;
-    }
+    // public void SetPlayerAltitudeAtCrash(float crashAltitude)
+    // {
+    //     spaceshipCommandSignalAtCrash = crashAltitude;
+    // }
 
-    public void SetCoinAltitude(float altitude)
-    {
-        coinAltitude = altitude;
-    }
+    // public void SetCoinAltitude(float altitude)
+    // {
+    //     coinAltitude = altitude;
+    // }
 
-    public void SetCoinPaddedHeight(float height)
-    {
-        coinHeight = height;
-    }
+    // public void SetCoinPaddedHeight(float height)
+    // {
+    //     coinHeight = height;
+    // }
 
-    public void SetSpaceshipCommandSignalAtCurvePeakPointCrossing(float verticalCommand)
-    {
-        spaceshipCommandSignalAtCurvePeakPointCrossing = verticalCommand;
-    }
+    // public void SetSpaceshipCommandSignalAtCurvePeakPointCrossing(float verticalCommand)
+    // {
+    //     spaceshipCommandSignalAtCurvePeakPointCrossing = verticalCommand;
+    // }
 
-    public void SetCurveAmplitude(float amplitude)
-    {
-        curveAmplitude = amplitude;
-    }
+    // public void SetCurveAmplitude(float amplitude)
+    // {
+    //     curveAmplitude = amplitude;
+    // }
 
-    public void SetCurveWidth(float width)
-    {
-        curveWidth = width;
-    }
+    // public void SetCurveWidth(float width)
+    // {
+    //     curveWidth = width;
+    // }
 
-    public void SetCurveSpeed(float speed)
-    {
-        curveSpeed = speed;
-    }
+    // public void SetCurveSpeed(float speed)
+    // {
+    //     curveSpeed = speed;
+    // }
 
-    public void SetEMGBoost(float boost)
-    {
-        emgBoostFactor = boost;
-    }
+    // public void SetEMGBoost(float boost)
+    // {
+    //     emgBoostFactor = boost;
+    // }
 
     public void SetLPF(float LPF)
     {

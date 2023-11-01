@@ -7400,6 +7400,36 @@ MonoBehaviour:
   minScale: 0.5
   maxScale: 1
   widthSlider: {fileID: 714113921}
+  updateAndroidTrialLog:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: OnTrialCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  updateTrialInfoWithTrialNumber:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2723144247505590848, guid: 26ca2e3406594491db558976c576987b, type: 3}
+        m_TargetAssemblyTypeName: AndroidBinding, Assembly-CSharp
+        m_MethodName: SetTrialNumber
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1784408454
 Transform:
   m_ObjectHideFlags: 0
