@@ -26,15 +26,18 @@ public class LogicScript : MonoBehaviour
 
         if (currentScene.name == "Level1")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.UnloadSceneAsync(1);
+            SceneManager.LoadScene(1, LoadSceneMode.Additive);
         }
         else if (currentScene.name == "Level2")
         {
-            SceneManager.LoadScene(2);
+            SceneManager.UnloadSceneAsync(2);
+            SceneManager.LoadScene(2, LoadSceneMode.Additive);
         }
         else if (currentScene.name == "Level3")
         {
-            SceneManager.LoadScene(3);
+            SceneManager.UnloadSceneAsync(3);
+            SceneManager.LoadScene(3, LoadSceneMode.Additive);
         }
 
         // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -47,17 +50,19 @@ public class LogicScript : MonoBehaviour
 
     public void playGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
 
     public void levelTwo()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.UnloadSceneAsync(1);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 
     public void levelThree()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.UnloadSceneAsync(2);
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
 
     public void quitGame()
