@@ -168,15 +168,64 @@ public class AndroidBinding : MonoBehaviour
         }
     }
 
+    // public void Update()
+    // {
+    //     if (emgPwr > 0)
+    //     {
+    //         OnRawEMGPwrReceived.Invoke(emgPwr);
+    //         OnBatteryVoltageReceived.Invoke((float) batteryVoltage);
+    //         sensor.text = selectedDevice;
+    //     }
+    // }
+
     public void Update()
     {
+        Debug.Log("[Update] Update called");
+
+        // Check if emgPwr is greater than 0
         if (emgPwr > 0)
         {
-            OnRawEMGPwrReceived.Invoke(emgPwr);
-            OnBatteryVoltageReceived.Invoke((float) batteryVoltage);
-            sensor.text = selectedDevice;
+            Debug.Log("[Update] emgPwr is greater than 0: " + emgPwr);
+
+            // Checking if OnRawEMGPwrReceived is null
+            if (OnRawEMGPwrReceived != null)
+            {
+                Debug.Log("[Update] Invoking OnRawEMGPwrReceived");
+                OnRawEMGPwrReceived.Invoke(emgPwr);
+            }
+            else
+            {
+                Debug.LogError("[Update] OnRawEMGPwrReceived is null");
+            }
+
+            // Checking if OnBatteryVoltageReceived is null
+            if (OnBatteryVoltageReceived != null)
+            {
+                Debug.Log("[Update] Invoking OnBatteryVoltageReceived");
+                OnBatteryVoltageReceived.Invoke((float)batteryVoltage);
+            }
+            else
+            {
+                Debug.LogError("[Update] OnBatteryVoltageReceived is null");
+            }
+
+            // Checking if sensor is null
+            if (sensor != null)
+            {
+                Debug.Log("[Update] Updating sensor text");
+                sensor.text = selectedDevice;
+            }
+            else
+            {
+                Debug.LogError("[Update] sensor is null");
+            }
+        }
+        else
+        {
+            Debug.Log("[Update] emgPwr is not greater than 0: " + emgPwr);
         }
     }
+
 
     void emgPwrUpdated(int power)
     {
