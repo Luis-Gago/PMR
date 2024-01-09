@@ -63,12 +63,14 @@ public class SignalProcessing : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("SignalProcessing.cs Awake");
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
+        Debug.Log("SignalProcessing.cs Start");
         SignalProcessingReference.signalProcessingScript = this;
         StartGame();
         SetActiveMaxMode();

@@ -8,27 +8,48 @@ using System.Linq;
 
 public class AndroidBinding : MonoBehaviour
 {
-    // private static AndroidBinding _instance;
+    private static AndroidBinding _instance;
 
-    // public static AndroidBinding Instance
-    // {
-    //     get
-    //     {
-    //         if (_instance == null)
-    //         {
-    //             _instance = FindObjectOfType<AndroidBinding>();
+    public static AndroidBinding Instance
+    {
+        get
+        {
+            Debug.Log("Bridge: Instance get");
+            if (_instance == null)
+            {
+                Debug.Log("Bridge: Instance get if null");
+                _instance = FindObjectOfType<AndroidBinding>();
 
-    //             if (_instance == null)
-    //             {
-    //                 GameObject singletonObject = new GameObject();
-    //                 _instance = singletonObject.AddComponent<AndroidBinding>();
-    //                 singletonObject.name = typeof(AndroidBinding).ToString() + " (Singleton)";
-    //             }
-    //         }
+                if (_instance == null)
+                {
+                    Debug.Log("Bridge: Instance and existing object not found");
+                    GameObject singletonObject = new GameObject();
+                    _instance = singletonObject.AddComponent<AndroidBinding>();
+                    singletonObject.name = typeof(AndroidBinding).ToString() + " (Singleton)";
+                    DontDestroyOnLoad(singletonObject);
+                }
+            }
 
-    //         return _instance;
-    //     }
-    // }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            Debug.Log("Bridge: Awake. Restoring");
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Debug.Log("Bridge: Awake. Destroying");
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+    }
+
     AndroidJavaObject unityActivity;
     AndroidJavaObject bridge;
     
@@ -92,12 +113,13 @@ public class AndroidBinding : MonoBehaviour
 
     void Start()
     {    
-        DontDestroyOnLoad(gameObject);
+        Debug.Log("Bridge: Start");
         ConnectService();
         selectedDevice = "No device is selected!";
     }
 
     void ConnectService() {
+        Debug.Log("Bridge: Connect Service");
         // AndroidJavaClass is the Unity representation of a generic instance of java.lang.Class.
         // AndroidJavaClass Constructor - public AndroidJavaClass(string className); - Specifies the Java class name (e.g. java.lang.String).
         // Construct an AndroidJavaClass from the class name. This essentially means  
@@ -113,7 +135,13 @@ public class AndroidBinding : MonoBehaviour
         // Triggers android to connect to the service and also pass the callback
         // object so the android bridge can pass in updates
 
-        Debug.Log("Calling connectService");
+        if (bridge == null) {
+            Debug.Log("Bridge: ERROR WTF");
+        } else {
+            Debug.Log("Bridge: SUCCESS");
+        }
+
+        Debug.Log("Bridge: still in connectService");
 
         // Setup the parameters we want to send to our native plugin.
         object[] parameters = new object[2];
@@ -426,9 +454,9 @@ public class AndroidBinding : MonoBehaviour
     public void OnTrialCompleted() {
         TrialInfo trial = new TrialInfo();
         trial.Timestamp = DateTime.Now.ToString("O");
-        trial.trialNumber = trialNumber;
+        trial.trialNumber = AndroidBinding.Instance.trialNumber;
         // trial.playerLife = playerLife;
-        trial.playerNormalScore = playerNormalScore;
+        trial.playerNormalScore = AndroidBinding.Instance.playerNormalScore;
         // trial.playerBonusScore = playerBonusScore;
         // trial.coinAltitude = coinAltitude;
         // trial.coinHeight = coinHeight;
@@ -439,30 +467,34 @@ public class AndroidBinding : MonoBehaviour
         // trial.spaceshipCommandSignalAtCrash = spaceshipCommandSignalAtCrash;
         // trial.emgBoostFactor = emgBoostFactor;
         // trial.spaceshipCommandSignalAtCurvePeakPointCrossing = spaceshipCommandSignalAtCurvePeakPointCrossing;
-        trial.lpf = lpf;
-        trial.emgRaw = emgRaw;
-        trial.emgFiltered = emgFiltered;
-        trial.emgMaxFiltered = emgMaxFiltered;
-        trial.emgMinFiltered = emgMinFiltered;
-        trial.emgScaled = emgScaled;
-        trial.sensorMACAddress = selectedEMGDevice;
-        trial.sensorChannel = selectedEmgDeviceChannel - 1; // to make the logs 0-indexed
-        trial.batteryVoltage = batteryVoltage;
-        trial.firmwareVersion = firmwareVersion;
+        trial.lpf = AndroidBinding.Instance.lpf;
+        trial.emgRaw = AndroidBinding.Instance.emgRaw;
+        trial.emgFiltered = AndroidBinding.Instance.emgFiltered;
+        trial.emgMaxFiltered = AndroidBinding.Instance.emgMaxFiltered;
+        trial.emgMinFiltered = AndroidBinding.Instance.emgMinFiltered;
+        trial.emgScaled = AndroidBinding.Instance.emgScaled;
+        trial.sensorMACAddress = AndroidBinding.Instance.selectedEMGDevice;
+        trial.sensorChannel = AndroidBinding.Instance.selectedEmgDeviceChannel - 1; // to make the logs 0-indexed
+        trial.batteryVoltage = AndroidBinding.Instance.batteryVoltage;
+        trial.firmwareVersion = AndroidBinding.Instance.firmwareVersion;
         trial.softwareVersionHash = GetVersionHash();
 
-        LogTrial(JsonUtility.ToJson(trial));
+        AndroidBinding.Instance.LogTrial(JsonUtility.ToJson(trial));
     }
 
     private void LogTrial(string trial) {
         // bridge = new AndroidJavaObject("org.sralab.emgimu.unity_bindings.Bridge"); //hardcode
         Debug.Log("LogTrial: " + trial);
-        Debug.Log("Bridge: " + bridge);
         object[] parameters = { trial };
         if (bridge != null)
         {
             bridge.Call("logTrial", parameters);  // put some code here to fail gracefully
-            Debug.Log("LogTrial in if statement: " + trial);
+            Debug.Log("Bridge: LogTrial in if statement: " + trial);
+        } 
+        else 
+        {
+            Debug.Log("ERROR: Bridge is null");
+            Debug.Log("Bridge selected sensor: " + selectedEMGDevice);
         }
     }
 
@@ -488,7 +520,7 @@ public class AndroidBinding : MonoBehaviour
 
     public void SetTrialNumber(int number)
     {
-        trialNumber = number;
+        AndroidBinding.Instance.trialNumber = number;
         Debug.Log("SetTrialNumber Bridge: " + bridge);
     }
 
