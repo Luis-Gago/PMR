@@ -422,7 +422,7 @@ public class AndroidBinding : MonoBehaviour
     private struct TrialInfo
     {
         // birdgame specific fields
-        public int playerScore;
+        // public int playerScore;
         public Time TrialEndTime;
         public String Timestamp;
         public int trialNumber;
