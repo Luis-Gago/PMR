@@ -52,6 +52,8 @@ public class PipeSpawnScript : MonoBehaviour
             updateAndroidTrialLog.Invoke();
             trialNumber++;
             updateTrialInfoWithTrialNumber.Invoke(trialNumber);
+            //Update trial number
+            AndroidBinding.Instance.SetTrialNumber(trialNumber);
 
         }
         

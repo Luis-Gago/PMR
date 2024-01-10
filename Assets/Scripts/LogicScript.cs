@@ -89,6 +89,8 @@ public class LogicScript : MonoBehaviour
         playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
         ding.Play();
+         // Set the player's normal score to playerScore
+        AndroidBinding.Instance.SetPlayerNormalScore(playerScore);
     }
 
     public void restartGame()

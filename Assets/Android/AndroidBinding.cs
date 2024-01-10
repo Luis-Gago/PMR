@@ -526,7 +526,7 @@ public class AndroidBinding : MonoBehaviour
 
     public void SetPlayerNormalScore(int playerScore)
     {
-        playerNormalScore = playerScore;
+        AndroidBinding.Instance.playerNormalScore = playerScore;
     }
 
     // public void SetPlayerBonusScore(int bonusScore)
@@ -586,38 +586,39 @@ public class AndroidBinding : MonoBehaviour
 
     public void SetLPF(float LPF)
     {
-        lpf = LPF;
+        AndroidBinding.Instance.lpf = LPF;
     }
 
     public void SetRawEMG(float rawEMG)
     {
-        emgRaw = rawEMG;
+        AndroidBinding.Instance.emgRaw = rawEMG;
     }
     public void SetFilteredEMG(float filteredEMG)
     {
-        emgFiltered = filteredEMG;
+        AndroidBinding.Instance.emgFiltered = filteredEMG;
     }
     public void SetMaxFilteredEMG(float filteredMaxEMG)
     {
-        emgMaxFiltered = filteredMaxEMG;
+        //Fix so they all look like this.
+        AndroidBinding.Instance.emgMaxFiltered = filteredMaxEMG;
     }
     public void SetMinFilteredEMG(float filteredMinEMG)
     {
-        emgMinFiltered = filteredMinEMG;
+        AndroidBinding.Instance.emgMinFiltered = filteredMinEMG;
     }
 
     public void SetScaledEMG(float scaledEMG)
     {
-        emgScaled = scaledEMG;
+        AndroidBinding.Instance.emgScaled = scaledEMG;
     }
 
     private void SetSensorMac(String MAC)
     {
-        selectedEMGDevice = MAC;
+        AndroidBinding.Instance.selectedEMGDevice = MAC;
     }
 
     private void SetSensorChannel(int channel)
     {
-        selectedEmgDeviceChannel = channel;
+        AndroidBinding.Instance.selectedEmgDeviceChannel = channel;
     }
 }

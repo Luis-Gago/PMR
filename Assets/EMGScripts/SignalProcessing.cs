@@ -163,6 +163,14 @@ public class SignalProcessing : MonoBehaviour
         Debug.Log("SignalProcessing.cs max_filtered: " + max_filtered);
         UpdateEmgScaledUI.Invoke(emgScaled);
         UpdateActiveMaxFilteredEmgUI.Invoke(active_max_filtered);
+
+        //Send emg data to logs
+        AndroidBinding.Instance.SetMaxFilteredEMG(max_filtered);
+        AndroidBinding.Instance.SetMinFilteredEMG(min_filtered);
+        AndroidBinding.Instance.SetFilteredEMG(filtered_power);
+        AndroidBinding.Instance.SetRawEMG(last_pwr);
+        AndroidBinding.Instance.SetScaledEMG(emgScaled);
+        AndroidBinding.Instance.SetLPF(lpf);
     }
 
 
