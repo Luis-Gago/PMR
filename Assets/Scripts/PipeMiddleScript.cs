@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using System;
+using System.Linq;
 
 public class PipeMiddleScript : MonoBehaviour
 {
@@ -13,6 +17,17 @@ public class PipeMiddleScript : MonoBehaviour
     private Vector3 resetStartPosition; // Starting position for resetting
 
     public float resetDuration = 1.0f; // Duration for the reset animation (you can adjust this)
+
+    // Declare the UpdateAndroidTrialLog event
+    [Serializable]
+    public class Event : UnityEvent { };
+    public Event updateAndroidTrialLog; // Reference to the UpdateAndroidTrialLog event
+
+    [Serializable]
+    public class IntEvent : UnityEvent<int> { };
+    public IntEvent updateTrialInfoWithTrialNumber;
+    private int trialNumber = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +60,13 @@ public class PipeMiddleScript : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             logic.addScore(1);
+
+            // Invoke the UpdateAndroidTrialLog event
+            updateAndroidTrialLog.Invoke();
+            trialNumber++;
+            updateTrialInfoWithTrialNumber.Invoke(trialNumber);
+            //Update trial number
+            AndroidBinding.Instance.SetTrialNumber(trialNumber);
 
             // Check if bird's x position is between -4 and -9
             if (birdScript.transform.position.x >= -11f && birdScript.transform.position.x <= -7f)

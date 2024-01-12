@@ -39,6 +39,10 @@ public class BirdScript : MonoBehaviour
         Vector3 newObjectPosition = Bird.transform.position;
         newObjectPosition.y = smoothPosition;
         Bird.transform.position = newObjectPosition;
+
+        //Send bird x and y coordinates to firestore
+        AndroidBinding.Instance.setPlayerXCoordinate(Bird.transform.position.x);
+        AndroidBinding.Instance.setPlayerYCoordinate(Bird.transform.position.y);
     }
 
     public void TriggerGameOver()

@@ -65,6 +65,11 @@ public class AndroidBinding : MonoBehaviour
     // private bool didPlayerCrashThisTrial = false;
     private int trialNumber;
     private int playerNormalScore;
+    private float playerxCoordinate;
+    private float playeryCoordinate;
+    private float pipexCoordinate;
+    private float pipeyCoordinate;
+    private float pipeWidth;
     private int playerBonusScore;
     private int playerLife;
     private float coinAltitude;
@@ -428,6 +433,11 @@ public class AndroidBinding : MonoBehaviour
         public int trialNumber;
         // public int playerLife;
         public int playerNormalScore;
+        public float playerxCoordinate;
+        public float playeryCoordinate;
+        public float pipexCoordinate;
+        public float pipeyCoordinate;
+        public float pipeWidth;
         // public int playerBonusScore;
         // public float coinAltitude;
         // public float coinHeight;
@@ -478,6 +488,11 @@ public class AndroidBinding : MonoBehaviour
         trial.batteryVoltage = AndroidBinding.Instance.batteryVoltage;
         trial.firmwareVersion = AndroidBinding.Instance.firmwareVersion;
         trial.softwareVersionHash = GetVersionHash();
+        trial.playerxCoordinate = AndroidBinding.Instance.playerxCoordinate;
+        trial.playeryCoordinate = AndroidBinding.Instance.playeryCoordinate;
+        trial.pipexCoordinate = AndroidBinding.Instance.pipexCoordinate;
+        trial.pipeyCoordinate = AndroidBinding.Instance.pipeyCoordinate;
+        trial.pipeWidth = AndroidBinding.Instance.pipeWidth;
 
         AndroidBinding.Instance.LogTrial(JsonUtility.ToJson(trial));
     }
@@ -527,6 +542,31 @@ public class AndroidBinding : MonoBehaviour
     public void SetPlayerNormalScore(int playerScore)
     {
         AndroidBinding.Instance.playerNormalScore = playerScore;
+    }
+
+    public void setPlayerXCoordinate(float xcoordinate)
+    {
+        AndroidBinding.Instance.playerxCoordinate = xcoordinate;
+    }
+
+    public void setPlayerYCoordinate(float ycoordinate)
+    {
+        AndroidBinding.Instance.playeryCoordinate = ycoordinate;
+    }
+
+    public void setPipeXCoordinate(float xcoordinate)
+    {
+        AndroidBinding.Instance.pipexCoordinate = xcoordinate;
+    }
+
+    public void setPipeYCoordinate(float ycoordinate)
+    {
+        AndroidBinding.Instance.pipeyCoordinate = ycoordinate;
+    }
+
+    public void setPipeWidth(float width)
+    {
+        AndroidBinding.Instance.pipeWidth = width;
     }
 
     // public void SetPlayerBonusScore(int bonusScore)

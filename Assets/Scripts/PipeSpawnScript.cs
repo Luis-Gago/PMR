@@ -38,6 +38,7 @@ public class PipeSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (timer < spawnRate)
         {
             timer += Time.deltaTime;
@@ -72,6 +73,11 @@ public class PipeSpawnScript : MonoBehaviour
         newPipe.transform.localScale = new Vector3(randomWidth, currentScale.y, currentScale.z);
 
         spawnRate = initialSpawnRate + randomWidth;
+
+        //Send pipe x and y coordinates to firestore
+        AndroidBinding.Instance.setPipeWidth(newPipe.transform.localScale.x);
+        AndroidBinding.Instance.setPipeXCoordinate(newPipe.transform.position.x);
+        AndroidBinding.Instance.setPipeYCoordinate(newPipe.transform.position.y);
     }
 }
 
