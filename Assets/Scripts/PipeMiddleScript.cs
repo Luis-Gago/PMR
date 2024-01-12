@@ -57,16 +57,19 @@ public class PipeMiddleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        if (collision.gameObject.name == "LogTrial")
         {
-            logic.addScore(1);
-
             // Invoke the UpdateAndroidTrialLog event
             updateAndroidTrialLog.Invoke();
             trialNumber++;
             updateTrialInfoWithTrialNumber.Invoke(trialNumber);
             //Update trial number
             AndroidBinding.Instance.SetTrialNumber(trialNumber);
+        }
+
+        if (collision.gameObject.name == "Middle")
+        {
+            logic.addScore(1);
 
             // Check if bird's x position is between -4 and -9
             if (birdScript.transform.position.x >= -11f && birdScript.transform.position.x <= -7f)
