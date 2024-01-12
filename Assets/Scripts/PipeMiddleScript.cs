@@ -26,7 +26,7 @@ public class PipeMiddleScript : MonoBehaviour
     [Serializable]
     public class IntEvent : UnityEvent<int> { };
     public IntEvent updateTrialInfoWithTrialNumber;
-    private int trialNumber = 0;
+    // private int trialNumber = 0;
 
 
     // Start is called before the first frame update
@@ -57,17 +57,6 @@ public class PipeMiddleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (this.gameObject.name == "LogTrial")
-        {
-            Debug.Log("this.gameObject.name == " + this.gameObject.name);
-            // Invoke the UpdateAndroidTrialLog event
-            updateAndroidTrialLog.Invoke();
-            trialNumber++;
-            updateTrialInfoWithTrialNumber.Invoke(trialNumber);
-            //Update trial number
-            AndroidBinding.Instance.SetTrialNumber(trialNumber);
-        }
 
         if (this.gameObject.name == "Middle")
         {
@@ -84,6 +73,18 @@ public class PipeMiddleScript : MonoBehaviour
                     StartCoroutine(ResetBirdPosition());
                 }
             }
+        }
+
+        if (this.gameObject.name == "LogTrial")
+        {
+            Debug.Log("this.gameObject.name == " + this.gameObject.name);
+            // Invoke the UpdateAndroidTrialLog event
+            updateAndroidTrialLog.Invoke();
+            // trialNumber++;
+            // updateTrialInfoWithTrialNumber.Invoke(trialNumber);
+            // //Update trial number
+            // AndroidBinding.Instance.SetTrialNumber(trialNumber);
+            // Debug.Log("Trial Number: " + trialNumber);
         }
     }
 

@@ -63,7 +63,7 @@ public class AndroidBinding : MonoBehaviour
     public Event SwitchToWaitForUserState;
 
     // private bool didPlayerCrashThisTrial = false;
-    private int trialNumber;
+    // public int trialNumber;
     private int playerNormalScore;
     private float playerxCoordinate;
     private float playeryCoordinate;
@@ -430,7 +430,7 @@ public class AndroidBinding : MonoBehaviour
         // public int playerScore;
         public Time TrialEndTime;
         public String Timestamp;
-        public int trialNumber;
+        // public int trialNumber;
         // public int playerLife;
         public int playerNormalScore;
         public float playerxCoordinate;
@@ -464,7 +464,7 @@ public class AndroidBinding : MonoBehaviour
     public void OnTrialCompleted() {
         TrialInfo trial = new TrialInfo();
         trial.Timestamp = DateTime.Now.ToString("O");
-        trial.trialNumber = AndroidBinding.Instance.trialNumber;
+        // trial.trialNumber = AndroidBinding.Instance.trialNumber;
         // trial.playerLife = playerLife;
         trial.playerNormalScore = AndroidBinding.Instance.playerNormalScore;
         // trial.playerBonusScore = playerBonusScore;
@@ -533,11 +533,11 @@ public class AndroidBinding : MonoBehaviour
         }
     }
 
-    public void SetTrialNumber(int number)
-    {
-        AndroidBinding.Instance.trialNumber = number;
-        Debug.Log("SetTrialNumber Bridge: " + bridge);
-    }
+    // public void SetTrialNumber(int number)
+    // {
+    //     AndroidBinding.Instance.trialNumber = number;
+    //     Debug.Log("SetTrialNumber Bridge: " + bridge);
+    // }
 
     public void SetPlayerNormalScore(int playerScore)
     {
