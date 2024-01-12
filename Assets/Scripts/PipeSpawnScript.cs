@@ -18,14 +18,14 @@ public class PipeSpawnScript : MonoBehaviour
     public Slider widthSlider; // Reference to the WidthSlider in the Unity UI
 
 // Declare the UpdateAndroidTrialLog event
-    [Serializable]
-    public class Event : UnityEvent { };
-    public Event updateAndroidTrialLog; // Reference to the UpdateAndroidTrialLog event
+    // [Serializable]
+    // public class Event : UnityEvent { };
+    // public Event updateAndroidTrialLog; // Reference to the UpdateAndroidTrialLog event
 
-    [Serializable]
-    public class IntEvent : UnityEvent<int> { };
-    public IntEvent updateTrialInfoWithTrialNumber;
-    private int trialNumber = 0;
+    // [Serializable]
+    // public class IntEvent : UnityEvent<int> { };
+    // public IntEvent updateTrialInfoWithTrialNumber;
+    // // private int trialNumber = 0;
 
 
     // Start is called before the first frame update
@@ -49,12 +49,12 @@ public class PipeSpawnScript : MonoBehaviour
             timer = 0;
             Debug.Log("Spawn Rate: " + spawnRate); // Print spawnRate to console
 
-            // Invoke the UpdateAndroidTrialLog event
-            updateAndroidTrialLog.Invoke();
-            trialNumber++;
-            updateTrialInfoWithTrialNumber.Invoke(trialNumber);
-            //Update trial number
-            AndroidBinding.Instance.SetTrialNumber(trialNumber);
+            // // Invoke the UpdateAndroidTrialLog event
+            // updateAndroidTrialLog.Invoke();
+            // trialNumber++;
+            // updateTrialInfoWithTrialNumber.Invoke(trialNumber);
+            // //Update trial number
+            // AndroidBinding.Instance.SetTrialNumber(trialNumber);
 
         }
         

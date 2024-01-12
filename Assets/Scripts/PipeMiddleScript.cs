@@ -57,8 +57,10 @@ public class PipeMiddleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "LogTrial")
+        
+        if (this.gameObject.name == "LogTrial")
         {
+            Debug.Log("this.gameObject.name == " + this.gameObject.name);
             // Invoke the UpdateAndroidTrialLog event
             updateAndroidTrialLog.Invoke();
             trialNumber++;
@@ -67,8 +69,9 @@ public class PipeMiddleScript : MonoBehaviour
             AndroidBinding.Instance.SetTrialNumber(trialNumber);
         }
 
-        if (collision.gameObject.name == "Middle")
+        if (this.gameObject.name == "Middle")
         {
+            Debug.Log("this.gameObject.name == " + this.gameObject.name);
             logic.addScore(1);
 
             // Check if bird's x position is between -4 and -9
