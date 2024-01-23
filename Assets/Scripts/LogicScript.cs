@@ -18,6 +18,9 @@ public class LogicScript : MonoBehaviour
         ding.Play();
          // Set the player's normal score to playerScore
         AndroidBinding.Instance.SetPlayerNormalScore(playerScore);
+
+        Scene scene = SceneManager.GetActiveScene();
+        AndroidBinding.Instance.SetPlayerLevel(scene.name);
     }
 
     public void restartGame()

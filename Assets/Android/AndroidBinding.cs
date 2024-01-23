@@ -64,6 +64,7 @@ public class AndroidBinding : MonoBehaviour
 
     // private bool didPlayerCrashThisTrial = false;
     // public int trialNumber;
+    private string playerLevel;
     private int playerNormalScore;
     private float playerxCoordinate;
     private float playeryCoordinate;
@@ -432,6 +433,7 @@ public class AndroidBinding : MonoBehaviour
         public String Timestamp;
         // public int trialNumber;
         // public int playerLife;
+        public string playerLevel;
         public int playerNormalScore;
         public float playerxCoordinate;
         public float playeryCoordinate;
@@ -467,6 +469,7 @@ public class AndroidBinding : MonoBehaviour
         // trial.trialNumber = AndroidBinding.Instance.trialNumber;
         // trial.playerLife = playerLife;
         trial.playerNormalScore = AndroidBinding.Instance.playerNormalScore;
+        trial.playerLevel = AndroidBinding.Instance.playerLevel;
         // trial.playerBonusScore = playerBonusScore;
         // trial.coinAltitude = coinAltitude;
         // trial.coinHeight = coinHeight;
@@ -538,7 +541,10 @@ public class AndroidBinding : MonoBehaviour
     //     AndroidBinding.Instance.trialNumber = number;
     //     Debug.Log("SetTrialNumber Bridge: " + bridge);
     // }
-
+    public void SetPlayerLevel(string currentLevel)
+    {
+        AndroidBinding.Instance.playerLevel = currentLevel;
+    }
     public void SetPlayerNormalScore(int playerScore)
     {
         AndroidBinding.Instance.playerNormalScore = playerScore;
