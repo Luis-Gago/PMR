@@ -10,6 +10,7 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     public GameObject gameOverScreen;
     public AudioSource ding;
+    private bool isPausedGameOver = false;
 
     public void addScore(int scoreToAdd)
     {
@@ -33,11 +34,13 @@ public class LogicScript : MonoBehaviour
         // Get the build index of the current scene and restart it
         int sceneIndex = currentScene.buildIndex;
         StartCoroutine(SwitchToScene(sceneIndex, sceneIndex));
+        PauseOnLoss();
     }
 
     public void gameOver()
     {
         gameOverScreen.SetActive(true);
+        PauseOnLoss();
     }
 
     public void playGame()
@@ -64,5 +67,19 @@ public class LogicScript : MonoBehaviour
     {
         yield return SceneManager.UnloadSceneAsync(sceneToUnload);
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void PauseOnLoss()
+    {
+        isPausedGameOver = !isPausedGameOver;
+
+        if (isPausedGameOver)
+        {
+            Time.timeScale = 0; // Pause the game
+        }
+        else
+        {
+            Time.timeScale = 1; // Resume the game
+        }
     }
 }
