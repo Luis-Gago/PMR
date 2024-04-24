@@ -9,7 +9,7 @@ using System.Linq;
 public class PipeSpawnScript : MonoBehaviour
 {
     public GameObject pipe;
-    public float initialSpawnRate = 2;
+    public float initialSpawnRate = 3;
     private float spawnRate = 2;
     private float timer = 0;
     public float heightOffset = 2;
