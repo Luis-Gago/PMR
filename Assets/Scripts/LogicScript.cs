@@ -19,6 +19,11 @@ public class LogicScript : MonoBehaviour
         playerScore += scoreToAdd; // Increase the score
         updateScoreText(); // Update the score in the UI
         ding.Play(); // Play the sound effect
+        
+        AndroidBinding.Instance.SetPlayerNormalScore(playerScore);
+
+        Scene scene = SceneManager.GetActiveScene();
+        AndroidBinding.Instance.SetPlayerLevel(scene.name);
     }
 
     private void updateScoreText()
@@ -47,7 +52,7 @@ public class LogicScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene(); // Get the current scene
         playerScore = 0; // Reset the player score
         setCountdownTimer(0); // Reset the countdown timer
-
+        AndroidBinding.Instance.SetPlayerNormalScore(playerScore);
         Time.timeScale = 1; // Ensure the game time is resumed
 
         StartCoroutine(SwitchToScene(currentScene.buildIndex, currentScene.buildIndex)); // Reload the scene
