@@ -18,6 +18,7 @@ public class LogicScript : MonoBehaviour
     {
         playerScore += scoreToAdd; // Increase the score
         updateScoreText(); // Update the score in the UI
+        ding.Play(); // Play the sound effect
     }
 
     private void updateScoreText()
